@@ -20,5 +20,8 @@ class UserController {
         }
     }
 }
+// constructor(params) {
+    
+// }
 
 export default new UserController;
