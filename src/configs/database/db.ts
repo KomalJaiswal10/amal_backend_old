@@ -2,22 +2,22 @@ import { Sequelize } from "sequelize";
 import "dotenv/config";
 
 
-const sequelize: Sequelize = new Sequelize({
+const db: Sequelize = new Sequelize({
     dialect: 'mysql',
     host: process.env.DB_HOST,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DATABASE,
-    logging: true,
+    logging: console.log,
 });
 
 
 try {
-    sequelize.authenticate();
+    db.authenticate();
     console.log(`Database connected`);
 } catch (error) {
-    console.error(`Unable to connect database : ${error}`)
+    console.log(`Unable to connect database : ${error}`)
 }
 
-
+export default db;
 
