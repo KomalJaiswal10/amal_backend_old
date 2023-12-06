@@ -1,18 +1,18 @@
 import { InferAttributes } from "sequelize";
-import UserModel from "../models/user";
 
-class UserService {
+import DbOperations from "../interface/base_interface";
 
-    create = async (payload: InferAttributes<UserModel>) => {
+// class UserService {
 
-        console.log(`here`);
-        return await UserModel.create(payload);
-    }
+//     create = async (payload: InferAttributes<UserModel>) => {
 
-    findUser = async (filter: any) => await UserModel.findOne({ where: filter });
+//         console.log(`here`);
+//         return await UserModel.create(payload);
+//     }
 
-
-}
+//     findUser = async (filter: any) => await UserModel.findOne({ where: filter });
 
 
-export default new UserService;
+// }
+
+

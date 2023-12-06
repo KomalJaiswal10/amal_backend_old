@@ -1,24 +1,32 @@
 import { NextFunction, Request, Response } from "express"
-import userService from '../service/user';
+
 import { InferAttributes } from "sequelize";
-import UserModel from "../models/user";
 
-class UserController {
+import BaseController from "./base_controller";
 
-    public create = async (req: Request, res: Response, next: NextFunction) => {
+// class UserController {
 
-        const searchId = req.body.email ? { email: req.body.email } : { number: req.body.number };
+//     public create = async (req: Request, res: Response, next: NextFunction) => {
 
-        const isExist = await userService.findUser(searchId);
-        console.log(isExist);
-        if (!isExist) {
-            const user: InferAttributes<UserModel> | null = await userService.create(req.body);
-            if (user)
-                res.status(200).json({ data: user, message: 'User Created' });
-        } else {
-            next(res.status(400).json({ message: 'Account Already Exist' }));
-        }
+//         const isExist = await userService.findUser({ number: req.body.number });
+
+//         if (!isExist) {
+//             const user: InferAttributes<UserModel> | null = await userService.create(req.body);
+//             if (user)
+//                 res.status(200).json({ data: user, message: 'User Created' });
+//         } else {
+//             next(res.status(400).json({ message: 'Account Already Exist' }));
+//         }
+//     }
+// }
+
+
+class UserController implements BaseController{
+    create(): void {
+        throw new Error("Method not implemented.");
     }
+   
+
 }
 
 export default new UserController;

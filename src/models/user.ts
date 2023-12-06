@@ -4,8 +4,8 @@ import db from "../configs/database/db";
 import bcrypt from "bcryptjs";
 
 
-class UserModel extends Model<InferAttributes<UserModel>, InferCreationAttributes<UserModel>>{
-    declare id: CreationOptional<string>;
+export class UserModel extends Model<InferAttributes<UserModel>, InferCreationAttributes<UserModel>>{
+    declare id: string;
     declare name: string;
     declare email: string;
     declare number: number;
@@ -73,4 +73,3 @@ UserModel.beforeCreate(async (user) => {
     user.password = bcrypt.hashSync(user.password, salt);
 });
 
-export default UserModel;
