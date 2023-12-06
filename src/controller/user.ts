@@ -28,5 +28,8 @@ class UserController implements BaseController{
    
 
 }
+// constructor(params) {
+    
+// }
 
 export default new UserController;
