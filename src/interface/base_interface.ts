@@ -1,12 +1,12 @@
 
 
 
-interface DbOperations<T, U> {
+interface DbOperations<T> {
 
 
     create(payload: any): Promise<T>;
 
-    update(filter: any, payload: U): Promise<T>;
+    update(filter: any, payload: any): Promise<T>;
 
     findAll(filter: any): Promise<T[]>;
 
@@ -16,6 +16,11 @@ interface DbOperations<T, U> {
 
 
 }
+
+
+
+
+
 
 
 export default DbOperations;

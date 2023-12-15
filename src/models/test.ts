@@ -3,8 +3,7 @@ import Sequelize from "sequelize";
 import db from "../configs/database/db";
 import bcrypt from "bcryptjs";
 
-
-class UserModel extends Model<InferAttributes<UserModel>, InferCreationAttributes<UserModel>>{
+class TestModel extends Model<InferAttributes<TestModel>, InferCreationAttributes<TestModel>>{
     declare id: string;
     declare name: string;
     declare email: string;
@@ -16,7 +15,10 @@ class UserModel extends Model<InferAttributes<UserModel>, InferCreationAttribute
     declare is_user: boolean;
 }
 
-UserModel.init({
+
+
+
+TestModel.init({
     id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -68,11 +70,11 @@ UserModel.init({
     freezeTableName: true
 });
 
-UserModel.beforeCreate(async (user) => {
+TestModel.beforeCreate(async (user) => {
     const salt = bcrypt.genSaltSync(10);
     user.password = bcrypt.hashSync(user.password, salt);
 });
 
 
-export default UserModel;
+export default TestModel;
 

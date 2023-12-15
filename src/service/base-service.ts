@@ -1,38 +1,58 @@
-import { InferAttributes, InferCreationAttributes, Model } from "sequelize";
+import { Model } from "sequelize";
+import UserModel from "../models/user";
 import DbOperations from "../interface/base_interface";
-import { UserModel } from "../models/user";
-
-
-class BaseService implements DbOperations<UserModel, InferCreationAttributes<UserModel>>{
-
-    create(payload: any): Promise<UserModel> {
-        throw new Error("Method not implemented.");
-    }
-    update(filter: any, payload: InferCreationAttributes<UserModel, { omit: never; }>): Promise<UserModel> {
-        throw new Error("Method not implemented.");
-    }
-    findAll(filter: any): Promise<UserModel[]> {
-        throw new Error("Method not implemented.");
-    }
-    findeOne(filter: any): Promise<UserModel | null> {
-        throw new Error("Method not implemented.");
-    }
-    destroy(filter: any): Promise<UserModel | null> {
-        throw new Error("Method not implemented.");
-    }
 
 
 
 
 
-
-   
-
-
-
-
+interface test {
+    user: UserModel
 }
 
 
 
-export default new BaseService;
+
+export async function createK(someEntity: any, payload: any): Promise<any> {
+    
+    let a = await someEntity.create(payload);
+    return a;
+}
+
+class BaseService<T extends any> implements DbOperations<T>{
+
+
+    create(payload: any): Promise<T> {
+        payload.create();
+        throw new Error("Method not implemented.");
+    }
+    update(filter: any, payload: any): Promise<T> {
+        throw new Error("Method not implemented.");
+    }
+    findAll(filter: any): Promise<T[]> {
+        throw new Error("Method not implemented.");
+    }
+    findeOne(filter: any): Promise<T | null> {
+        throw new Error("Method not implemented.");
+    }
+    destroy(filter: any): Promise<T | null> {
+        throw new Error("Method not implemented.");
+    }
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
